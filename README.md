@@ -9,7 +9,7 @@ Before running the project, make sure you have the following installed:
 Follow these steps to run the project on your local machine:
 
 1. Clone the repository:
-   `git clone interview-test-project`
+   `git clone https://github.com/unix238/interview-test-project.git`
 
 2. Navigate to the project directory:
    `cd interview-test-project`
