@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Adding new order</h2>
+<mat-dialog-content>
+  <p>Pick the item</p>
+  <mat-form-field>
+    <mat-label>Pick the item</mat-label>
+    <select matNativeControl required [(ngModel)]="data.item">
+      @for (item of items; track $index) {
+      <option value="{{ item.id }}">{{ item.name }}</option>
+      }
+    </select>
+  </mat-form-field>
+  <p>Enter the quantity</p>
+  <mat-form-field>
+    <mat-label>Quantity</mat-label>
+    <input matInput [(ngModel)]="data.quantity" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-button
+    [mat-dialog-close]="{
+      item: data.item,
+      quantity: data.quantity
+    }"
+    cdkFocusInitial
+  >
+    Ok
+  </button>
+</mat-dialog-actions>

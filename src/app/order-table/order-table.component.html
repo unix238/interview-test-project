@@ -1,0 +1,44 @@
+<button mat-raised-button (click)="openDialog()">Add New</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="item">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.item.name }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef>Quantity</th>
+    <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="unitPrice">
+    <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+    <td mat-cell *matCellDef="let element">{{ element.item.price }}</td>
+  </ng-container>
+  <ng-container matColumnDef="totalPrice">
+    <th mat-header-cell *matHeaderCellDef>Total Price</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.quantity * element.item.price }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    (click)="highlight(row)"
+    [class.demo-row-is-clicked]="row.id == selected?.id"
+    *matRowDef="let row; columns: displayedColumns"
+  ></tr>
+</table>
+
+@if ( selected ) {
+<button mat-flat-button color="warn" (click)="delete(selected)">Delete</button>
+}
